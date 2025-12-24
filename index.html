@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sree V K - AIML Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #3b82f6;
+            --dark-bg: #0f172a;
+            --light-bg: #f8fafc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #334155;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(15, 23, 42, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #fff !important;
+            letter-spacing: 1px;
+        }
+
+        .nav-link {
+            color: #cbd5e1 !important;
+            font-weight: 500;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--accent-color) !important;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 80%;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none"/><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #cbd5e1;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #e2e8f0;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Styling */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+            text-align: center;
+            color: var(--dark-bg);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-section {
+            background: var(--light-bg);
+        }
+
+        .skill-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.2);
+        }
+
+        .skill-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .skill-card h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--dark-bg);
+        }
+
+        .skill-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skill-card ul li {
+            padding: 8px 0;
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        .skill-card ul li::before {
+            content: '▹';
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .experience-card {
+            background: white;
+            border-left: 4px solid var(--primary-color);
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .experience-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 25px rgba(37, 99, 235, 0.15);
+        }
+
+        .experience-card h4 {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .experience-card .date {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        /* Projects Section */
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.2);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 30px;
+            position: relative;
+        }
+
+        .project-header i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .project-header h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .project-body {
+            padding: 25px;
+        }
+
+        .project-tags {
+            margin-bottom: 15px;
+        }
+
+        .project-tag {
+            display: inline-block;
+            background: #e0f2fe;
+            color: var(--primary-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin: 3px;
+            font-weight: 500;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--light-bg);
+        }
+
+        .contact-info {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: var(--light-bg);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: #e0f2fe;
+            transform: translateX(5px);
+        }
+
+        .contact-item i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-right: 20px;
+            width: 50px;
+            text-align: center;
+        }
+
+        .contact-item-content h5 {
+            margin: 0;
+            font-weight: 600;
+            color: var(--dark-bg);
+        }
+
+        .contact-item-content p {
+            margin: 5px 0 0 0;
+            color: #64748b;
+        }
+
+        .contact-item-content a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item-content a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-bg);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">Sree V K</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center hero-content">
+                <div class="col-lg-8">
+                    <h1 class="hero-title">Hi, I'm Sree V K</h1>
+                    <h2 class="hero-subtitle">B.Tech AIML Undergraduate | Data Analytics Enthusiast</h2>
+                    <p class="hero-description">
+                        Motivated B.Tech AIML undergraduate with a strong foundation in Python, SQL, and Data Analytics. 
+                        Hands-on experience with predictive modeling and deployment. Eager to apply analytical and 
+                        machine learning skills in challenging internship or entry-level roles.
+                    </p>
+                    <div class="social-links">
+                        <a href="mailto:sreevk2006@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                        <a href="https://linkedin.com/in/sreevk26" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/Sree-26" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="tel:+919894012289" title="Phone"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            
+            <div class="row mb-5">
+                <div class="col-lg-6 mb-4">
+                    <div class="experience-card">
+                        <h4><i class="fas fa-graduation-cap me-2"></i>Education</h4>
+                        <p class="date"><i class="fas fa-calendar-alt me-2"></i>09/2024 – 2028</p>
+                        <h5>B.Tech in Artificial Intelligence and Machine Learning</h5>
+                        <p><strong>Bannari Amman Institute of Technology</strong>, Erode, India</p>
+                        <p>CGPA: 7.52</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="experience-card">
+                        <h4><i class="fas fa-briefcase me-2"></i>Experience</h4>
+                        <p class="date"><i class="fas fa-calendar-alt me-2"></i>11/2025</p>
+                        <h5>Data Analytics Job Simulation</h5>
+                        <p><strong>Deloitte Australia</strong> (via Forage) - Virtual</p>
+                        <ul class="mt-3">
+                            <li>Executed data wrangling on client datasets in Excel</li>
+                            <li>Performed statistical analysis in Tableau</li>
+                            <li>Designed interactive Tableau dashboard</li>
+                            <li>Communicated data-driven insights to stakeholders</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="text-center mb-5" style="color: var(--dark-bg); font-weight: 600;">Technical Skills</h3>
+            <div class="row">
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="skill-card">
+                        <i class="fas fa-code"></i>
+                        <h4>Languages & Databases</h4>
+                        <ul>
+                            <li>Python</li>
+                            <li>SQL</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="skill-card">
+                        <i class="fas fa-brain"></i>
+                        <h4>ML Frameworks</h4>
+                        <ul>
+                            <li>Scikit-Learn</li>
+                            <li>Pandas</li>
+                            <li>NumPy</li>
+                            <li>Matplotlib</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="skill-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h4>Data Visualization</h4>
+                        <ul>
+                            <li>Tableau</li>
+                            <li>Excel (Pivot Tables)</li>
+                            <li>Streamlit</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="skill-card">
+                        <i class="fas fa-tools"></i>
+                        <h4>Developer Tools</h4>
+                        <ul>
+                            <li>Git</li>
+                            <li>GitHub</li>
+                            <li>VS Code</li>
+                            <li>Linux</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-lg-6 mb-4">
+                    <div class="experience-card">
+                        <h4><i class="fas fa-certificate me-2"></i>Certifications</h4>
+                        <ul class="mt-3">
+                            <li>Transformer-Based Natural Language Processing (NVIDIA)</li>
+                            <li>AWS Solutions Architecture Job Simulation (Forage)</li>
+                            <li>Google AI Essentials (Google)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="experience-card">
+                        <h4><i class="fas fa-trophy me-2"></i>Achievements & Leadership</h4>
+                        <ul class="mt-3">
+                            <li><strong>TCS CodeVita:</strong> Cleared Round 1</li>
+                            <li><strong>Code Saga 2.0:</strong> Overall In-Charge</li>
+                            <li><strong>Frontend Frenzy 2.0:</strong> Volunteer</li>
+                            <li><strong>Code With Curious 3.0:</strong> Creative Team</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <i class="fas fa-cloud-rain"></i>
+                            <h3>Rainfall Prediction Model</h3>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-tags">
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">Scikit-Learn</span>
+                                <span class="project-tag">Streamlit</span>
+                                <span class="project-tag">Machine Learning</span>
+                            </div>
+                            <p>Developed a predictive machine learning model to classify rainfall likelihood based on atmospheric data.</p>
+                            <ul class="mt-3">
+                                <li>Implemented Support Vector Classifier (SVC) model with 15% accuracy improvement</li>
+                                <li>Applied feature scaling (normalization) on meteorological data</li>
+                                <li>Deployed as real-time web application using Streamlit framework</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <i class="fas fa-keyboard"></i>
+                            <h3>Typing Speed Test Application</h3>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-tags">
+                                <span class="project-tag">Team Project</span>
+                                <span class="project-tag">BIT Hackathon</span>
+                                <span class="project-tag">Frontend</span>
+                            </div>
+                            <p>Built an interactive typing speed test application during BIT Hackathon - Season 2.</p>
+                            <ul class="mt-3">
+                                <li>Contributed to feature implementation and logic design</li>
+                                <li>Performed collaborative debugging under time constraints</li>
+                                <li>Enhanced user experience with real-time feedback</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-5">
+                <h4 style="color: var(--dark-bg); margin-bottom: 20px;">Hackathon Participation</h4>
+                <div class="row justify-content-center">
+                    <div class="col-md-4 mb-3">
+                        <div class="experience-card">
+                            <h5><i class="fas fa-code me-2"></i>BIT Hackathon S2</h5>
+                            <p>Team collaboration & feature development</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="experience-card">
+                            <h5><i class="fas fa-users me-2"></i>GHCI Hackathon</h5>
+                            <p>National-level problem-solving competition</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="experience-card">
+                            <h5><i class="fas fa-laptop-code me-2"></i>K-Hacks 3.0</h5>
+                            <p>Multi-round hackathon (Results awaited)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div class="contact-item-content">
+                                <h5>Email</h5>
+                                <p><a href="mailto:sreevk2006@gmail.com">sreevk2006@gmail.com</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div class="contact-item-content">
+                                <h5>Phone</h5>
+                                <p><a href="tel:+919894012289">+91 9894012289</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-linkedin"></i>
+                            <div class="contact-item-content">
+                                <h5>LinkedIn</h5>
+                                <p><a href="https://linkedin.com/in/sreevk26" target="_blank">linkedin.com/in/sreevk26</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-github"></i>
+                            <div class="contact-item-content">
+                                <h5>GitHub</h5>
+                                <p><a href="https://github.com/Sree-26" target="_blank">github.com/Sree-26</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="contact-item-content">
+                                <h5>Location</h5>
+                                <p>Erode, India</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Sree V K. All rights reserved.</p>
+            <p class="mt-2">B.Tech AIML Undergraduate | Machine Learning Enthusiast</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Active navigation link on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
