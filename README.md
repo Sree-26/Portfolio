@@ -1,60 +1,49 @@
-🚀 Professional Portfolio | Sree V K
-This repository contains my personal portfolio website, designed to showcase my academic journey, technical projects, and my aspiration to become an AI/ML Researcher. The site is built with a focus on responsive design and professional aesthetics.
+# 🚀 Professional Portfolio | Sree V K
 
-👤 About Me
-I am a B.Tech Artificial Intelligence and Machine Learning student at Bannari Amman Institute of Technology (Class of 2028). I am passionate about data-driven problem solving, predictive modeling, and the mathematical foundations of AI.
+[![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://sreevkportfolio.vercel.app/)
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com/)
 
-🛠️ Tech Stack
-Structure: HTML5
+Welcome to my professional portfolio! This website is a comprehensive showcase of my academic background, technical expertise in **Artificial Intelligence and Machine Learning**, and my journey toward becoming an **AI/ML Researcher**.
 
-Styling: CSS3 & Custom Styles
+## 👤 Profile Overview
+I am currently a second-year **B.Tech AIML** student at **Bannari Amman Institute of Technology**. I focus on building scalable machine learning models and extracting actionable insights from complex datasets.
 
-Framework: Bootstrap 5 (for Grid System and Responsive Components)
+## 🛠️ Built With
+This portfolio was developed using a clean and responsive front-end stack:
+* **HTML5:** Semantic structure for better accessibility and SEO.
+* **CSS3:** Custom styling for a unique professional aesthetic.
+* **Bootstrap 5:** Utilized for a mobile-first responsive grid system and modern UI components.
+* **Vercel:** Cloud hosting and continuous deployment.
 
-Deployment: Vercel
+## 📂 Key Sections
+* **About Me:** Academic history (CGPA 7.52) and my core philosophy as an aspiring researcher.
+* **Experience:** Highlights of my Data Analytics simulation with **Deloitte Australia**, featuring work in **Tableau** and **Excel**.
+* **Projects:** * **Rainfall Prediction:** A Machine Learning project using **SVC (Support Vector Classifier)**.
+    * **Typing Speed App:** A collaboration focusing on logic and real-time performance.
+* **Skills:** A breakdown of my proficiency in Python, SQL, Scikit-Learn, and Streamlit.
+* **Certifications:** Credentials from industry leaders like NVIDIA, AWS, and Google.
 
-Assets: FontAwesome Icons & Google Fonts
+## 🚀 Installation and Local Development
+Since this project uses static web technologies, no complex installation is required.
 
-📂 Features
-Fully Responsive: Optimized for mobile, tablet, and desktop views using Bootstrap's grid system.
+1.  **Clone the Repo**
+    ```bash
+    git clone [https://github.com/Sree-26/your-repo-name.git](https://github.com/Sree-26/your-repo-name.git)
+    ```
+2.  **Open the Project**
+    Navigate to the project folder and open `index.html` in your preferred browser.
 
-Project Showcase: Dedicated cards for technical work including my Rainfall Prediction Model (SVC) and Hackathon projects.
+## 🏆 Achievements
+* **TCS CodeVita:** Successfully cleared Round 1.
+* **Leadership:** Overall In-Charge for *Code Saga 2.0* and volunteer for various technical events.
+* **Hackathons:** Active participant in BIT Hackathon, GHCI, and K-Hacks.
 
-Experience Timeline: Highlighting my Data Analytics simulation with Deloitte Australia.
+## 📬 Contact
+* **LinkedIn:** [linkedin.com/in/sreevk26](https://linkedin.com/in/sreevk26)
+* **GitHub:** [@Sree-26](https://github.com/Sree-26)
+* **Email:** [sreevk2006@gmail.com](mailto:sreevk2006@gmail.com)
 
-Certification Gallery: Displaying credentials from NVIDIA, Google, and AWS.
-
-🚀 How to Run Locally
-Since this is a static site, you don't need to install any dependencies.
-
-Clone the repository:
-
-Bash
-
-git clone https://github.com/Sree-26/your-repo-name.git
-Navigate to the folder:
-
-Bash
-
-cd your-repo-name
-Open the project: Simply double-click the index.html file or use a "Live Server" extension in VS Code.
-
-📈 Featured AI/ML Projects
-Rainfall Prediction Model: * Tools: Python, Scikit-Learn, Streamlit.
-
-Result: Implemented Support Vector Classifier (SVC) with a 15% accuracy boost.
-
-Data Analytics Simulation (Deloitte):
-
-Tools: Tableau, Excel.
-
-Action: Executed data wrangling and designed interactive dashboards for client insights.
-
-📬 Connect with Me
-LinkedIn: linkedin.com/in/sreevk26
-
-GitHub: github.com/Sree-26
-
-Email: sreevk2006@gmail.com
-
-Built with precision and a passion for AI.
+---
+*Stay curious. Keep building.*
