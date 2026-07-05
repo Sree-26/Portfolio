@@ -101,6 +101,8 @@
 
   /* ---- hero ---- */
   .hero-grid{display:grid; grid-template-columns: 1.3fr 1fr; gap:40px; align-items:center;}
+  @media(max-width:768px){ .hero-grid{grid-template-columns: 1fr; gap:32px;} }
+  
   .hero-sub{color:var(--ink-soft); font-size:15px; max-width:46ch; margin-bottom:22px;}
   .type-row{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:26px;}
   .type-badge{
@@ -123,25 +125,49 @@
   .btn:hover{transform:translate(2px,2px); box-shadow:2px 2px 0 var(--ink);}
   .btn.secondary{background:var(--screen);}
 
-  .pokeball-frame{
-    width:100%; aspect-ratio:1; max-width:280px; margin:0 auto;
-    background:
-      linear-gradient(var(--pd-red) 0 50%, var(--screen) 50% 100%);
-    border-radius:50%;
-    border:5px solid var(--ink);
-    position:relative;
-    display:flex; align-items:center; justify-content:center;
-    overflow:hidden;
+  /* ---- trainer avatar & pokeball backdrop layout ---- */
+  .trainer-container {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    height: 340px;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
   }
-  .pokeball-frame::before{
+  .pokeball-backdrop {
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(var(--pd-red) 0 50%, var(--screen) 50% 100%);
+    border-radius: 50%;
+    border: 5px solid var(--ink);
+    z-index: 1;
+  }
+  .pokeball-backdrop::before {
     content:''; position:absolute; left:0; right:0; top:calc(50% - 4px); height:8px; background:var(--ink);
   }
-  .pokeball-btn{
-    width:34%; aspect-ratio:1; border-radius:50%; background:var(--screen);
-    border:5px solid var(--ink); z-index:2; position:relative;
+  .pokeball-center-btn {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 34%; aspect-ratio: 1; border-radius: 50%; background: var(--screen);
+    border: 5px solid var(--ink); z-index: 2;
   }
-  .pokeball-btn::after{
-    content:''; position:absolute; inset:26%; border-radius:50%; background:var(--screen); border:2px solid var(--ink);
+  .pokeball-center-btn::after {
+    content: ''; position: absolute; inset: 26%; border-radius: 50%; background: var(--screen); border: 2px solid var(--ink);
+  }
+  .trainer-img {
+    position: relative;
+    z-index: 3;
+    height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    filter: drop-shadow(4px 4px 0px rgba(28, 37, 65, 0.15));
   }
 
   /* ---- stat bars (skills) ---- */
@@ -185,21 +211,6 @@
   footer{
     text-align:center; padding:20px; color:var(--screen); font-size:11px; letter-spacing:1px;
   }
-
-  @keyframes bob{ from{transform:translateY(0);} to{transform:translateY(-2px);} }
-  @keyframes walk{
-    0%{ left:-40px; transform:scaleX(1); }
-    48%{ transform:scaleX(1); }
-    50%{ left:calc(100% + 10px); transform:scaleX(-1); }
-    98%{ transform:scaleX(-1); }
-    100%{ left:-40px; transform:scaleX(1); }
-  }
-  .pachirisu{ animation-duration:9s; }
-  .eevee{ animation-duration:13s; animation-delay:-4s; }
-  .vulpix{ animation-duration:16s; animation-delay:-9s; }
-  @media (prefers-reduced-motion: reduce){
-    .critter, .critter .body{animation:none; left:20%;}
-  }
 </style>
 </head>
 <body>
@@ -236,9 +247,14 @@
             <a class="btn secondary" href="#contact">CONTACT</a>
           </div>
         </div>
-        <div class="pokeball-frame">
-          <div class="pokeball-btn"></div>
+        
+        <div class="trainer-container">
+          <div class="pokeball-backdrop">
+            <div class="pokeball-center-btn"></div>
+          </div>
+          <img src="trainer.png" alt="Trainer Sree Waving" class="trainer-img">
         </div>
+        
       </div>
     </section>
 
