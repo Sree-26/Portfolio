@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trainer Card // AI/ML Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pd-red:#E3350D;
+    --pd-red-dark:#9E2308;
+    --screen:#F0EEE4;
+    --ink:#1C2541;
+    --ink-soft:#3A4570;
+    --yellow:#FFCB05;
+    --blue:#2A4E9E;
+    --green:#5FA95C;
+    --gray-line: rgba(28,37,65,0.15);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background: var(--ink);
+    color: var(--ink);
+    font-family:'JetBrains Mono', monospace;
+    line-height:1.6;
+  }
+  .pixel{font-family:'Press Start 2P', monospace;}
+  a{color:inherit;}
+
+  /* ---- scanline boot overlay ---- */
+  #boot{
+    position:fixed; inset:0; background:var(--ink); z-index:999;
+    display:flex; align-items:center; justify-content:center;
+    flex-direction:column; gap:16px;
+    transition:opacity .6s ease, visibility .6s ease;
+  }
+  #boot.hide{opacity:0; visibility:hidden; pointer-events:none;}
+  #boot .pixel{color:var(--yellow); font-size:12px; letter-spacing:1px;}
+  .boot-bar{width:220px; height:10px; border:2px solid var(--yellow); position:relative; overflow:hidden;}
+  .boot-bar::after{
+    content:''; position:absolute; left:0; top:0; bottom:0; width:0%;
+    background:var(--yellow); animation:load 1.4s ease forwards;
+  }
+  @keyframes load{ to{width:100%;} }
+
+  /* ---- pokedex shell ---- */
+  .shell{
+    max-width:920px; margin:0 auto;
+    background:var(--pd-red);
+    border-left:10px solid var(--pd-red-dark);
+    border-right:10px solid var(--pd-red-dark);
+    min-height:100vh;
+    position:relative;
+  }
+  .shell::before{
+    content:''; display:block; height:14px; background:var(--pd-red-dark);
+  }
+  .hinge{
+    display:flex; align-items:center; gap:14px;
+    padding:18px 24px;
+  }
+  .lens{
+    width:34px; height:34px; border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #bfe8ff 0%, #4fb3e8 35%, #1b5c8a 70%, #0c2f45 100%);
+    border:3px solid var(--ink);
+    flex-shrink:0;
+  }
+  .lens-row{display:flex; gap:8px; margin-left:auto;}
+  .dot{width:10px; height:10px; border-radius:50%; border:2px solid var(--ink);}
+  .dot.y{background:var(--yellow);}
+  .dot.g{background:var(--green);}
+  .dot.b{background:var(--blue);}
+
+  .brand{
+    color: var(--screen);
+    font-size:11px; letter-spacing:2px;
+  }
+
+  /* ---- screen ---- */
+  .screen{
+    background:var(--screen);
+    margin:0 20px 20px;
+    border:6px solid var(--ink);
+    border-radius:4px;
+    padding:0;
+  }
+
+  section{padding:56px 32px; border-bottom:1px solid var(--gray-line);}
+  section:last-child{border-bottom:none;}
+
+  .eyebrow{
+    font-size:11px; letter-spacing:2px; color: var(--pd-red);
+    margin-bottom:10px; display:flex; align-items:center; gap:8px;
+  }
+  .eyebrow::before{content:'▸'; color:var(--pd-red);}
+
+  h1.pixel{font-size:22px; line-height:1.6; color:var(--ink); margin-bottom:14px;}
+  h2.pixel{font-size:15px; color:var(--ink); margin-bottom:24px;}
+
+  /* ---- hero ---- */
+  .hero-grid{display:grid; grid-template-columns: 1.3fr 1fr; gap:40px; align-items:center;}
+  .hero-sub{color:var(--ink-soft); font-size:15px; max-width:46ch; margin-bottom:22px;}
+  .type-row{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:26px;}
+  .type-badge{
+    font-size:11px; padding:5px 12px; border-radius:20px; letter-spacing:.5px;
+    color:var(--screen); font-weight:700; text-transform:uppercase;
+  }
+  .type-ml{background:var(--blue);}
+  .type-py{background:var(--green);}
+  .type-data{background:var(--pd-red);}
+
+  .cta-row{display:flex; gap:12px; flex-wrap:wrap;}
+  .btn{
+    font-family:'JetBrains Mono', monospace; font-weight:700; font-size:13px;
+    padding:12px 20px; border-radius:2px; border:3px solid var(--ink);
+    background:var(--yellow); color:var(--ink); cursor:pointer;
+    text-decoration:none; display:inline-block;
+    box-shadow:4px 4px 0 var(--ink);
+    transition:transform .1s ease, box-shadow .1s ease;
+  }
+  .btn:hover{transform:translate(2px,2px); box-shadow:2px 2px 0 var(--ink);}
+  .btn.secondary{background:var(--screen);}
+
+  .pokeball-frame{
+    width:100%; aspect-ratio:1; max-width:280px; margin:0 auto;
+    background:
+      linear-gradient(var(--pd-red) 0 50%, var(--screen) 50% 100%);
+    border-radius:50%;
+    border:5px solid var(--ink);
+    position:relative;
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+  }
+  .pokeball-frame::before{
+    content:''; position:absolute; left:0; right:0; top:calc(50% - 4px); height:8px; background:var(--ink);
+  }
+  .pokeball-btn{
+    width:34%; aspect-ratio:1; border-radius:50%; background:var(--screen);
+    border:5px solid var(--ink); z-index:2; position:relative;
+  }
+  .pokeball-btn::after{
+    content:''; position:absolute; inset:26%; border-radius:50%; background:var(--screen); border:2px solid var(--ink);
+  }
+
+  /* ---- stat bars (skills) ---- */
+  .stat-block{margin-bottom:18px;}
+  .stat-label{display:flex; justify-content:space-between; font-size:13px; margin-bottom:6px;}
+  .stat-label span:first-child{font-weight:700;}
+  .stat-track{height:10px; background:rgba(28,37,65,0.12); border-radius:6px; overflow:hidden;}
+  .stat-fill{height:100%; border-radius:6px; background:var(--blue);}
+  .stat-fill.py{background:var(--green);}
+  .stat-fill.dl{background:var(--pd-red);}
+  .stat-fill.tool{background:var(--yellow);}
+
+  .skills-grid{display:grid; grid-template-columns: 1fr 1fr; gap:0 40px;}
+  @media(max-width:640px){.skills-grid{grid-template-columns:1fr;}}
+
+  /* ---- pokedex entry cards (projects) ---- */
+  .entries{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:20px;}
+  .entry{
+    border:3px solid var(--ink); border-radius:6px; background:#fff;
+    padding:18px; position:relative;
+  }
+  .entry-no{
+    position:absolute; top:-12px; right:14px; background:var(--ink); color:var(--screen);
+    font-size:11px; padding:3px 8px; border-radius:10px; font-family:'Press Start 2P', monospace;
+  }
+  .entry-name{font-weight:700; font-size:16px; margin-bottom:4px;}
+  .entry-type{font-size:11px; color:var(--pd-red); letter-spacing:1px; margin-bottom:12px; text-transform:uppercase;}
+  .entry-desc{font-size:13px; color:var(--ink-soft); margin-bottom:14px;}
+  .entry:has(.entry-moves) .entry-desc{min-height:60px;}
+  .entry-moves{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:14px;}
+  .move{
+    font-size:10px; border:1.5px solid var(--ink); border-radius:4px; padding:3px 7px;
+    background:var(--screen);
+  }
+  .entry-link{font-size:12px; font-weight:700; text-decoration:none; color:var(--blue); border-bottom:2px solid var(--blue);}
+
+  /* ---- contact ---- */
+  .contact-inner{text-align:center;}
+  .contact-row{display:flex; justify-content:center; gap:14px; flex-wrap:wrap; margin-top:20px;}
+
+  footer{
+    text-align:center; padding:20px; color:var(--screen); font-size:11px; letter-spacing:1px;
+  }
+
+  @keyframes bob{ from{transform:translateY(0);} to{transform:translateY(-2px);} }
+  @keyframes walk{
+    0%{ left:-40px; transform:scaleX(1); }
+    48%{ transform:scaleX(1); }
+    50%{ left:calc(100% + 10px); transform:scaleX(-1); }
+    98%{ transform:scaleX(-1); }
+    100%{ left:-40px; transform:scaleX(1); }
+  }
+  .pachirisu{ animation-duration:9s; }
+  .eevee{ animation-duration:13s; animation-delay:-4s; }
+  .vulpix{ animation-duration:16s; animation-delay:-9s; }
+  @media (prefers-reduced-motion: reduce){
+    .critter, .critter .body{animation:none; left:20%;}
+  }
+</style>
+</head>
+<body>
+
+<div id="boot">
+  <div class="pixel">LOADING POKÉDEX...</div>
+  <div class="boot-bar"></div>
+</div>
+
+<div class="shell">
+  <div class="hinge">
+    <div class="lens"></div>
+    <div class="brand pixel">POKÉDEX</div>
+    <div class="lens-row">
+      <div class="dot y"></div><div class="dot g"></div><div class="dot b"></div>
+    </div>
+  </div>
+
+  <div class="screen">
+
+    <section id="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">ENTRY NO. 001 — WILD TRAINER APPEARED</div>
+          <h1 class="pixel">SREE V K<br>AI/ML ENGINEERING STUDENT</h1>
+          <p class="hero-sub">B.Tech AIML @ Bannari Amman Institute of Technology, Class of 2028. Catches messy data, trains it into models, deploys it into the wild — hackathons included.</p>
+          <div class="type-row">
+            <span class="type-badge type-ml">ML type</span>
+            <span class="type-badge type-py">Python type</span>
+            <span class="type-badge type-data">NLP/LLM type</span>
+          </div>
+          <div class="cta-row">
+            <a class="btn" href="#projects">VIEW PROJECTS</a>
+            <a class="btn secondary" href="#contact">CONTACT</a>
+          </div>
+        </div>
+        <div class="pokeball-frame">
+          <div class="pokeball-btn"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="eyebrow">TRAINER STATS</div>
+      <h2 class="pixel">SKILL MOVESET</h2>
+      <div class="skills-grid">
+        <div>
+          <div class="stat-block">
+            <div class="stat-label"><span>Python</span><span>90</span></div>
+            <div class="stat-track"><div class="stat-fill py" style="width:90%"></div></div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-label"><span>Scikit-learn / TensorFlow</span><span>80</span></div>
+            <div class="stat-track"><div class="stat-fill dl" style="width:80%"></div></div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-label"><span>ML Algorithms (RF, SVM, Isolation Forest)</span><span>82</span></div>
+            <div class="stat-track"><div class="stat-fill" style="width:82%"></div></div>
+          </div>
+        </div>
+        <div>
+          <div class="stat-block">
+            <div class="stat-label"><span>NLP / LLMs / RAG</span><span>72</span></div>
+            <div class="stat-track"><div class="stat-fill" style="width:72%"></div></div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-label"><span>SQL / Pandas / Data Viz</span><span>85</span></div>
+            <div class="stat-track"><div class="stat-fill tool" style="width:85%"></div></div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-label"><span>FastAPI / Streamlit / Deployment</span><span>78</span></div>
+            <div class="stat-track"><div class="stat-fill tool" style="width:78%"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="eyebrow">CAUGHT SPECIES</div>
+      <h2 class="pixel">PROJECTS</h2>
+      <div class="entries">
+        <div class="entry">
+          <div class="entry-no">#01</div>
+          <div class="entry-name">KAVACH AI</div>
+          <div class="entry-type">Fintech / Insurance type</div>
+          <div class="entry-desc">Parametric insurance platform for gig workers, built at Guidewire DEVTrails 2026 as Team Lead. Random Forest premium pricing + Isolation Forest fraud detection on income-loss claims.</div>
+          <div class="entry-moves"><span class="move">FastAPI</span><span class="move">Random Forest</span><span class="move">Isolation Forest</span></div>
+          <a class="entry-link" href="https://github.com/Sree-26">VIEW GITHUB →</a>
+        </div>
+        <div class="entry">
+          <div class="entry-no">#02</div>
+          <div class="entry-name">Dark Pattern Defender</div>
+          <div class="entry-type">Consumer Protection / Vision type</div>
+          <div class="entry-desc">Creative Thinking Award winner at TurboHaq'26. Detects manipulative UI dark patterns via Gemini Vision, cross-references Indian consumer law, and auto-drafts Notices of Violation. Trained on a 2,356-row dataset.</div>
+          <div class="entry-moves"><span class="move">Gemini Vision</span><span class="move">Streamlit</span><span class="move">Pandas</span></div>
+          <a class="entry-link" href="https://github.com/Sree-26">VIEW GITHUB →</a>
+        </div>
+        <div class="entry">
+          <div class="entry-no">#03</div>
+          <div class="entry-name">Rainfall Prediction</div>
+          <div class="entry-type">Weather / Deployed ML type</div>
+          <div class="entry-desc">SVM classifier on meteorological data, +15% accuracy gain after preprocessing. Deployed as a live Streamlit app with real-time prediction.</div>
+          <div class="entry-moves"><span class="move">Scikit-learn (SVC)</span><span class="move">Streamlit</span></div>
+          <a class="entry-link" href="https://github.com/Sree-26/Rainfall-Prediction">VIEW GITHUB →</a>
+        </div>
+        <div class="entry">
+          <div class="entry-no">#04</div>
+          <div class="entry-name">Spotify Wrapped</div>
+          <div class="entry-type">EDA / Visualization type</div>
+          <div class="entry-desc">End-to-end exploratory data analysis on personal Spotify listening history, with a companion repo covering full pipeline cleaning and feature engineering.</div>
+          <div class="entry-moves"><span class="move">Pandas</span><span class="move">Matplotlib</span><span class="move">Seaborn</span></div>
+          <a class="entry-link" href="https://github.com/Sree-26/Spotify-Wrapped">VIEW GITHUB →</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="eyebrow">ENTRY NO. 002 — GYM BADGE PROGRESS</div>
+      <h2 class="pixel">EDUCATION</h2>
+      <div class="entry" style="max-width:420px;">
+        <div class="entry-name">B.Tech, Artificial Intelligence &amp; Machine Learning</div>
+        <div class="entry-type">Bannari Amman Institute of Technology</div>
+        <div class="entry-desc" style="margin-bottom:0;">Sep 2024 – May 2028 · Anna University · CGPA 7.67 / 10.0</div>
+      </div>
+    </section>
+
+    <section id="achievements">
+      <div class="eyebrow">BADGES EARNED</div>
+      <h2 class="pixel">ACHIEVEMENTS & CERTS</h2>
+      <div class="entries">
+        <div class="entry">
+          <div class="entry-name">Creative Thinking Award</div>
+          <div class="entry-type">TurboHaq'26</div>
+          <div class="entry-desc">Won for Dark Pattern Defender — recognised for an innovative AI-driven approach to consumer protection.</div>
+        </div>
+        <div class="entry">
+          <div class="entry-name">TCS CodeVita Round 1</div>
+          <div class="entry-type">Competitive Programming</div>
+          <div class="entry-desc">Cleared round 1 of a global competitive programming contest, demonstrating algorithmic problem-solving.</div>
+        </div>
+        <div class="entry">
+          <div class="entry-name">Overall In-Charge, Code Saga 2.0</div>
+          <div class="entry-type">Code Circle, BIT</div>
+          <div class="entry-desc">Led end-to-end planning, team management, and execution of a college-level technical event.</div>
+        </div>
+        <div class="entry">
+          <div class="entry-name">Certifications</div>
+          <div class="entry-type">NPTEL · NVIDIA · Google · AWS</div>
+          <div class="entry-desc">NPTEL Elite: Affective Computing (78%), Intro to LLMs (60%) · NVIDIA: Transformer-Based NLP · Google: AI Essentials, Prompting Essentials · AWS: Solutions Architecture Job Simulation.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="contact-inner">
+        <div class="eyebrow" style="justify-content:center;">SEND OUT TRAINER</div>
+        <h2 class="pixel">LET'S CONNECT</h2>
+        <p class="hero-sub" style="margin:0 auto;">Open to opportunities in AI/ML. Reach out below.</p>
+        <div class="contact-row">
+          <a class="btn" href="mailto:sreevk2006@gmail.com">EMAIL</a>
+          <a class="btn secondary" href="https://github.com/Sree-26">GITHUB</a>
+          <a class="btn secondary" href="https://linkedin.com/in/sreevk26">LINKEDIN</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<footer class="pixel">© <span id="year"></span> · BUILT WITH JETBRAINS MONO & GRIT</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  window.addEventListener('load', () => {
+    setTimeout(() => document.getElementById('boot').classList.add('hide'), 1400);
+  });
+</script>
+
+</body>
+</html>
