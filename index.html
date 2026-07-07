@@ -207,6 +207,32 @@
     filter: drop-shadow(4px 4px 0px rgba(28, 37, 65, 0.15));
   }
 
+  /* ---- Pachirisu Companion ---- */
+  .pachirisu-wrapper {
+    position: absolute;
+    bottom: 20px;       
+    right: -10px;       
+    z-index: 5;         
+    animation: idleBounce 1.5s ease-in-out infinite; 
+  }
+
+  .pachirisu-sprite {
+    width: 70px;        
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(3px 3px 0px rgba(28, 37, 65, 0.15)); 
+    transform: scaleX(-1); 
+  }
+
+  @keyframes idleBounce {
+    0%, 100% { 
+      transform: translateY(0); 
+    }
+    50% { 
+      transform: translateY(-8px); 
+    }
+  }
+
   /* ---- stat bars (skills) ---- */
   .stat-block{margin-bottom:18px;}
   .stat-label{display:flex; justify-content:space-between; font-size:13px; margin-bottom:6px;}
@@ -291,6 +317,11 @@
             <div class="pokeball-center-btn"></div>
           </div>
           <img src="trainer.png" alt="Trainer Sree" class="trainer-img">
+          
+          <div class="pachirisu-wrapper">
+            <img src="pachirisu.png" alt="Pachirisu Companion" class="pachirisu-sprite">
+          </div>
+          
         </div>
         
       </div>
