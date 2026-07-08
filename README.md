@@ -9,7 +9,7 @@
 Welcome to my professional portfolio! This website is a comprehensive showcase of my academic background, technical expertise in **Artificial Intelligence and Machine Learning**, and my journey toward becoming an **AI/ML Researcher**.
 
 ## 👤 Profile Overview
-I am currently a second-year **B.Tech AIML** student at **Bannari Amman Institute of Technology**. I focus on building scalable machine learning models and extracting actionable insights from complex datasets.
+I am currently a third-year **B.Tech AIML** student at **Bannari Amman Institute of Technology**. I focus on building scalable machine learning models and extracting actionable insights from complex datasets.
 
 ## 🛠️ Built With
 This portfolio was developed using a clean and responsive front-end stack:
@@ -19,7 +19,7 @@ This portfolio was developed using a clean and responsive front-end stack:
 * **Vercel:** Cloud hosting and continuous deployment.
 
 ## 📂 Key Sections
-* **About Me:** Academic history (CGPA 7.52) and my core philosophy as an aspiring researcher.
+* **About Me:** Academic history (CGPA 7.67) and my core philosophy as an aspiring researcher.
 * **Experience:** Highlights of my Data Analytics simulation with **Deloitte Australia**, featuring work in **Tableau** and **Excel**.
 * **Projects:** * **Rainfall Prediction:** A Machine Learning project using **SVC (Support Vector Classifier)**.
     * **Typing Speed App:** A collaboration focusing on logic and real-time performance.
