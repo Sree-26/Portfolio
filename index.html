@@ -107,6 +107,17 @@ footer{text-align:center;padding:30px 20px 50px;color:var(--mut);font-size:12px}
 .sp:nth-child(1){left:14%;top:30%}.sp:nth-child(2){right:15%;top:22%;animation-delay:.6s}.sp:nth-child(3){left:20%;top:62%;animation-delay:1.2s}.sp:nth-child(4){right:18%;top:56%;animation-delay:1.8s}
 @keyframes tw{0%,100%{opacity:0;scale:.4}50%{opacity:1;scale:1}}
 .hav{background-size:150% auto;background-position:37% 0;background-color:#4a3a9a}
+h2 small{display:block;font-size:.58em;color:var(--red);margin-top:10px}
+#links{opacity:1;pointer-events:auto;transform:none}
+.sk{display:grid;grid-template-columns:150px 1fr;gap:6px 18px;padding:14px 0;border-bottom:2px dashed var(--ink)}
+.sk b{font-size:10px;grid-row:span 2;align-self:center}
+.sk .tools{display:flex;flex-wrap:wrap;gap:6px}
+.sk .tools span{font-size:12px;padding:2px 9px;border:2px solid var(--ink);background:var(--card);opacity:0;transform:translateY(8px);transition:opacity .4s,transform .4s}
+.sk.in .tools span{opacity:1;transform:none}
+.sk .tools span:nth-child(2){transition-delay:.07s}.sk .tools span:nth-child(3){transition-delay:.14s}.sk .tools span:nth-child(4){transition-delay:.21s}.sk .tools span:nth-child(5){transition-delay:.28s}
+.sk p{font-size:12px;color:var(--mut)}
+footer a{color:var(--blue);font-weight:700}
+@media(max-width:720px){.sk{grid-template-columns:1fr}.sk b{grid-row:auto}}
 </style>
 </head>
 <body>
@@ -117,7 +128,7 @@ footer{text-align:center;padding:30px 20px 50px;color:var(--mut);font-size:12px}
 <header id="hud">
   <span class="px" style="display:flex;align-items:center;gap:8px"><i class="hav"></i>TRAINER SREE</span>
   <span id="clock">--:--:--</span>
-  <span id="xpbox"><span class="px" id="lv">LV 1</span><span id="xpbar"><div id="xpfill"></div></span><button class="btn" id="th" style="padding:2px 8px;font-size:11px;box-shadow:2px 2px 0 #1b1b2f" aria-label="Toggle day and night">☀/☾</button></span>
+  <span id="xpbox"><span class="px" id="lv">LV 1</span><span id="xpbar"><div id="xpfill"></div></span><button class="btn" id="th" style="padding:2px 8px;font-size:11px;box-shadow:2px 2px 0 #1b1b2f" aria-label="Toggle day and night">☀/☾</button><button class="btn" id="wm" style="padding:2px 8px;font-size:11px;box-shadow:2px 2px 0 #1b1b2f" aria-label="Turn wild encounters on or off">Wild: on</button></span>
   <div id="prog"></div>
 </header>
 
@@ -135,16 +146,16 @@ footer{text-align:center;padding:30px 20px 50px;color:var(--mut);font-size:12px}
 </section>
 
 <section class="wrap" id="skills">
-  <h2 class="px">Skill moveset</h2>
+  <h2 class="px">Skills<small>Skill moveset</small></h2>
   <div id="sk"></div>
 </section>
 
 <section class="wrap" id="projects">
-  <h2 class="px">Caught species</h2>
+  <h2 class="px">Projects<small>Caught species</small></h2>
   <div class="grid">
     <article class="card"><small>Fintech / Insurance type · Team Lead</small><h3 class="px">Kavach AI</h3><p>Led a team from problem definition to a working API-backed parametric insurance platform for gig workers at Guidewire DEVTrails 2026. A Random Forest prices premiums, an Isolation Forest flags fraud in income-loss claims, and FastAPI serves both.</p><div class="chips"><span>FastAPI</span><span>Random Forest</span><span>Isolation Forest</span></div><a href="https://github.com/Sree-26">GitHub</a></article>
     <article class="card"><small>Consumer protection / Vision type</small><h3 class="px">Dark Pattern Defender</h3><p>Creative Thinking Award winner at TurboHaq’26. Gemini Vision detects manipulative UI dark patterns, cross-references Indian consumer law and auto-drafts Notices of Violation. Trained and evaluated on a 2,356-row dataset, with a Streamlit interface.</p><div class="chips"><span>Gemini Vision</span><span>Streamlit</span><span>Pandas</span></div><a href="https://github.com/Sree-26">GitHub</a></article>
-    <article class="card"><small>Vision / Content moderation type · In progress</small><h3 class="px">Deepfake Video Detection</h3><p>Attention-augmented ResNeXt-50 detector compared against a baseline CNN, with evaluation planned on FaceForensics++ and Celeb-DF v2. Identity-based splits prevent leakage and attention maps explain each call. Presented at ICET-SEMA 2026.</p><div class="chips"><span>PyTorch</span><span>ResNeXt-50</span><span>OpenCV</span><span>MTCNN</span></div><a href="https://github.com/Sree-26">GitHub</a></article>
+    <article class="card"><small>Vision / Content moderation type · In progress</small><h3 class="px">Deepfake Video Detection</h3><p>In progress: an attention-augmented ResNeXt-50 detector compared against a baseline CNN, with evaluation planned on FaceForensics++ and Celeb-DF v2. I own the data pipeline (OpenCV frames, MTCNN face crops, identity-based splits to prevent leakage), surveyed 10 papers and designed attention-map explanations. Presented at ICET-SEMA 2026.</p><div class="chips"><span>PyTorch</span><span>ResNeXt-50</span><span>OpenCV</span><span>MTCNN</span></div><a href="https://github.com/Sree-26">GitHub</a></article>
     <article class="card"><small>Geospatial / Anomaly type · Proposed for Smart India Hackathon</small><h3 class="px">DarkTrace</h3><p>Multi-stage pipeline that flags suspicious maritime activity: vessel detection in satellite imagery, AIS data correlation and anomaly scoring, with a dashboard for human decisions.</p><div class="chips"><span>Satellite imagery</span><span>AIS data</span><span>Anomaly scoring</span></div><a href="https://github.com/Sree-26">GitHub</a></article>
     <article class="card"><small>Weather / Deployed ML type</small><h3 class="px">Rainfall Prediction</h3><p>SVM classifier on meteorological data with a 15% accuracy gain after preprocessing. Deployed as a live Streamlit app with real-time prediction.</p><div class="chips"><span>Scikit-learn</span><span>SVC</span><span>Streamlit</span></div><a href="https://github.com/Sree-26/Rainfall-Prediction">GitHub</a></article>
     <article class="card"><small>EDA / Visualization type</small><h3 class="px">Spotify Wrapped Analysis</h3><p>End-to-end exploratory analysis of listening history, with a companion repo covering the full cleaning and feature-engineering pipeline.</p><div class="chips"><span>Pandas</span><span>Matplotlib</span><span>Seaborn</span></div><a href="https://github.com/Sree-26/Spotify-Wrapped">GitHub</a></article>
@@ -152,7 +163,7 @@ footer{text-align:center;padding:30px 20px 50px;color:var(--mut);font-size:12px}
 </section>
 
 <section class="wrap" id="badges">
-  <h2 class="px">Gym badges</h2>
+  <h2 class="px">Achievements<small>Gym badges</small></h2>
   <div id="dlg" class="px" style="font-size:11px"></div>
   <div class="grid">
     <div class="card badge" data-say="Sree used Dark Pattern Defender! It’s super effective at TurboHaq’26!"><span class="ico">🏆</span><h3 class="px">Creative Thinking Award</h3><p>TurboHaq’26, for Dark Pattern Defender and its AI-driven approach to consumer protection.</p></div>
@@ -165,12 +176,12 @@ footer{text-align:center;padding:30px 20px 50px;color:var(--mut);font-size:12px}
 </section>
 
 <section class="wrap" id="contact">
-  <h2 class="px">Send out trainer</h2>
-  <div id="send"><p style="color:var(--mut)">Open to AI/ML, GenAI and forward deployed engineering internships. Tap the ball.</p><div class="ball" id="sb" role="button" tabindex="0" aria-label="Open contact links"></div>
-  <div id="links"><button class="btn rs" style="background:var(--red);color:#fff">Resume</button><a class="btn" href="mailto:sreevk2006@gmail.com">Email</a><a class="btn" href="https://github.com/Sree-26">GitHub</a><a class="btn" href="https://linkedin.com/in/sreevk26">LinkedIn</a></div></div>
+  <h2 class="px">Contact<small>Send out trainer</small></h2>
+  <div id="send"><p style="color:var(--mut)">Open to AI/ML, GenAI and forward deployed engineering internships. Reach me anywhere below.</p><div class="ball" id="sb" role="button" tabindex="0" aria-label="Open contact links"></div>
+  <div id="links"><button class="btn rs" style="background:var(--red);color:#fff">Resume</button><a class="btn" href="mailto:sreevk2006@gmail.com">sreevk2006@gmail.com</a><a class="btn" href="https://github.com/Sree-26">GitHub</a><a class="btn" href="https://linkedin.com/in/sreevk26">LinkedIn</a></div></div>
 </section>
 </main>
-<footer>Built with JetBrains Mono and Press Start 2P.</footer>
+<footer><a href="mailto:sreevk2006@gmail.com">Email</a> · <a href="https://linkedin.com/in/sreevk26">LinkedIn</a> · <a href="https://github.com/Sree-26">GitHub</a><br>Built with JetBrains Mono and Press Start 2P.</footer>
 
 <div id="wild" role="status"><span id="wt"></span><div><button class="btn" id="wa">Fix it</button><button class="btn" id="wr" style="background:var(--bg2);color:var(--ink);border-color:var(--ink);box-shadow:2px 2px 0 var(--ink)">Run</button></div></div>
 
@@ -179,7 +190,8 @@ footer{text-align:center;padding:30px 20px 50px;color:var(--mut);font-size:12px}
 var $=function(s){return document.querySelector(s)},RM=matchMedia('(prefers-reduced-motion:reduce)').matches,root=document.documentElement;
 // boot sequence
 var steps=['LOADING POKÉDEX...','SYNCING TRAINER DATA...','WILD TRAINER FOUND!'],n=0,bf=$('#bf'),bt=$('#bt');
-var bi=setInterval(function(){n++;bf.style.width=Math.min(100,n*34)+'%';bt.textContent=steps[Math.min(2,n-1)]||steps[0];if(n>=3){clearInterval(bi);setTimeout(function(){$('#boot').classList.add('gone');startType()},350)}},RM?60:520);
+var bi=setInterval(function(){n++;bf.style.width=Math.min(100,n*34)+'%';bt.textContent=steps[Math.min(2,n-1)]||steps[0];if(n>=3){clearInterval(bi);setTimeout(function(){$('#boot').classList.add('gone');startType()},150)}},RM?60:300);
+$('#boot').addEventListener('click',function(){$('#boot').classList.add('gone');startType()});
 // day and night from real local time
 var h=new Date().getHours(),night=h>=18||h<6;
 if(!matchMedia('(prefers-color-scheme:dark)').matches||true){root.setAttribute('data-theme',night?'dark':'light')}
@@ -196,11 +208,16 @@ if(RM){tEl.textContent=lines.join(' ');started=true}
 // XP
 var xp=0;function gain(a){xp+=a;var lv=Math.floor(xp/30)+1;$('#lv').textContent='LV '+lv;$('#xpfill').style.width=(xp%30)/30*100+'%'}
 // skills
-var sk=[['Python',90],['SQL / Pandas / data pipelines',85],['ML: RF, SVM, Isolation Forest, ResNeXt-50',82],['PyTorch / TensorFlow / Scikit-learn',80],['FastAPI / Streamlit / OpenCV',78],['LLM / GenAI: Gemini Vision, RAG, prompting',74]];
-$('#sk').innerHTML=sk.map(function(s){return '<div class="skill"><span>'+s[0]+'</span><div class="hpb"><div class="hpf" data-v="'+s[1]+'"></div></div><b data-n="'+s[1]+'">0</b></div>'}).join('');
+var sk=[['Python','Python, SQL, Pandas, feature engineering','Kavach AI, Dark Pattern Defender, Deepfake Video Detection, Rainfall Prediction, Spotify Analysis'],
+['Classical ML','Random Forest, SVM, Isolation Forest, Scikit-learn','Kavach AI, Rainfall Prediction'],
+['Deep learning','PyTorch, TensorFlow, ResNeXt-50, OpenCV, MTCNN','Deepfake Video Detection'],
+['LLM / GenAI','Gemini Vision, prompt engineering, RAG, structured outputs','Dark Pattern Defender (auto-drafted legal notices)'],
+['Backend and apps','FastAPI, Streamlit','Kavach AI, Dark Pattern Defender, Rainfall Prediction'],
+['Tools and cloud','Git, GitHub, Vercel','Google AI Essentials, AWS Solutions Architecture job simulation']];
+$('#sk').innerHTML=sk.map(function(s){return '<div class="sk"><b class="px">'+s[0]+'</b><div class="tools">'+s[1].split(', ').map(function(t){return '<span>'+t+'</span>'}).join('')+'</div><p>Used in: '+s[2]+'</p></div>'}).join('');
 var seen={};
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting||seen[e.target.id])return;seen[e.target.id]=1;gain(8);
-if(e.target.id==='skills'){document.querySelectorAll('.hpf').forEach(function(f,i){setTimeout(function(){var v=+f.dataset.v;f.style.width=v+'%';f.style.background=v>=80?'#2fa84f':v>=70?'#f0b400':'#e3350d';var b=f.closest('.skill').querySelector('b'),c=0,id=setInterval(function(){c+=2;if(c>=v){c=v;clearInterval(id)}b.textContent=c},20)},i*140)})}})},{threshold:.35});
+if(e.target.id==='skills')document.querySelectorAll('.sk').forEach(function(k,i){setTimeout(function(){k.classList.add('in')},i*140)})})},{threshold:.35});
 document.querySelectorAll('section').forEach(function(s){io.observe(s)});
 // card tilt + glare
 document.querySelectorAll('.card,.tc').forEach(function(c){c.addEventListener('pointermove',function(e){if(e.pointerType==='touch'||RM)return;var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;c.style.setProperty('--ry',((x-.5)*12)+'deg');c.style.setProperty('--rx',((.5-y)*12)+'deg');c.style.setProperty('--mx',x*100+'%');c.style.setProperty('--my',y*100+'%')});c.addEventListener('pointerleave',function(){c.style.setProperty('--rx','0deg');c.style.setProperty('--ry','0deg')})});
@@ -233,7 +250,9 @@ var foes=['OVERFITTING','DATA LEAK','NULL VALUES','CLASS IMBALANCE','VANISHING G
 function wild(){var k=wi++%foes.length;$('#wt').innerHTML='<span class="px" style="font-size:10px;color:var(--red)">A wild '+foes[k]+' appeared!</span>';$('#wa').textContent=fx[k];$('#wild').classList.add('show');clearTimeout(wd);wd=setTimeout(function(){$('#wild').classList.remove('show')},9000)}
 $('#wa').onclick=function(){$('#wild').classList.remove('show');gain(12);burst(innerWidth/2,innerHeight-60,35)};
 $('#wr').onclick=function(){$('#wild').classList.remove('show')};
-setTimeout(function(){wild();setInterval(wild,28000)},14000);
+var wOn=true,wCount=0;function wildMaybe(){if(!wOn||wCount>=3)return;wCount++;wild()}
+setTimeout(function(){wildMaybe();setInterval(wildMaybe,60000)},40000);
+$('#wm').onclick=function(){wOn=!wOn;this.textContent=wOn?'Wild: on':'Wild: off';if(!wOn)$('#wild').classList.remove('show')};
 document.querySelector('.hav').style.backgroundImage='url('+document.getElementById('av').src+')';
 // resume download
 var RB="JVBERi0xLjQKJZOMi54gUmVwb3J0TGFiIEdlbmVyYXRlZCBQREYgZG9jdW1lbnQgKG9wZW5zb3VyY2UpCjEgMCBvYmoKPDwKL0YxIDIgMCBSIC9GMiAzIDAgUiAvRjMgNCAwIFIKPj4KZW5kb2JqCjIgMCBvYmoKPDwKL0Jhc2VGb250IC9IZWx2ZXRpY2EgL0VuY29kaW5nIC9XaW5BbnNpRW5jb2RpbmcgL05hbWUgL0YxIC9TdWJ0eXBlIC9UeXBlMSAvVHlwZSAvRm9udAo+PgplbmRvYmoKMyAwIG9iago8PAovQmFzZUZvbnQgL0hlbHZldGljYS1Cb2xkIC9FbmNvZGluZyAvV2luQW5zaUVuY29kaW5nIC9OYW1lIC9GMiAvU3VidHlwZSAvVHlwZTEgL1R5cGUgL0ZvbnQKPj4KZW5kb2JqCjQgMCBvYmoKPDwKL0Jhc2VGb250IC9IZWx2ZXRpY2EtQm9sZE9ibGlxdWUgL0VuY29kaW5nIC9XaW5BbnNpRW5jb2RpbmcgL05hbWUgL0YzIC9TdWJ0eXBlIC9UeXBlMSAvVHlwZSAvRm9udAo+PgplbmRvYmoKNSAwIG9iago8PAovQ29udGVudHMgOSAwIFIgL01lZGlhQm94IFsgMCAwIDU5NS4yNzU2IDg0MS44ODk4IF0gL1BhcmVudCA4IDAgUiAvUmVzb3VyY2VzIDw8Ci9Gb250IDEgMCBSIC9Qcm9jU2V0IFsgL1BERiAvVGV4dCAvSW1hZ2VCIC9JbWFnZUMgL0ltYWdlSSBdCj4+IC9Sb3RhdGUgMCAvVHJhbnMgPDwKCj4+IAogIC9UeXBlIC9QYWdlCj4+CmVuZG9iago2IDAgb2JqCjw8Ci9QYWdlTW9kZSAvVXNlTm9uZSAvUGFnZXMgOCAwIFIgL1R5cGUgL0NhdGFsb2cKPj4KZW5kb2JqCjcgMCBvYmoKPDwKL0F1dGhvciAoU3JlZSBWIEspIC9DcmVhdGlvbkRhdGUgKEQ6MjAyNjExMTcxMjQ3MTYrMDAnMDAnKSAvQ3JlYXRvciAoXCh1bnNwZWNpZmllZFwpKSAvS2V5d29yZHMgKCkgL01vZERhdGUgKEQ6MjAyNjExMTcxMjQ3MTYrMDAnMDAnKSAvUHJvZHVjZXIgKFJlcG9ydExhYiBQREYgTGlicmFyeSAtIFwob3BlbnNvdXJjZVwpKSAKICAvU3ViamVjdCAoXCh1bnNwZWNpZmllZFwpKSAvVGl0bGUgKFNyZWUgViBLIC0gUmVzdW1lKSAvVHJhcHBlZCAvRmFsc2UKPj4KZW5kb2JqCjggMCBvYmoKPDwKL0NvdW50IDEgL0tpZHMgWyA1IDAgUiBdIC9UeXBlIC9QYWdlcwo+PgplbmRvYmoKOSAwIG9iago8PAovRmlsdGVyIFsgL0FTQ0lJODVEZWNvZGUgL0ZsYXRlRGVjb2RlIF0gL0xlbmd0aCAzNzg1Cj4+CnN0cmVhbQpHYiEjXj5DNUAhJnEtQlo7KG5EYCZzLzZjZ0ZwYFg0QD1dYE5abFwzcG5cUTMuJGlAVFt0S1A4ay9acWlRR0QsVCcwMS4oQiJsUmxGUiksPWxJO2VKXFEkSTJmRGJGZlUsTmBINSdQLUFCSkxzRWlBPjQnVTs+cEA/YSY4RWJYVSZxRmRmXUJbNiUqXGZyM01CKj1iMDZrO0hPTUVdZ1BdQlkqOVNnS3E1Ni0sIlBXSGIudFBlN2ZRUyZLXEpnSVk/blMiJEcxVjNwZ2YqYSFXWigpSl5lZEw0NFBGUDxXZFAnMy0rcmEpSExGXk84SWEyZzBwVFpcUC5fXmlTNiomNyJLW0ZaVzxhYTNcZHI6OyxWdGA+QiQnWWUnRkBbRlcpL09VKzpvPHRUa1ZEUHU2ZlxYcUY7aV8oLSxHQitKO0ktYGhLTyxJZFczNCZ0PkFOJHEkR1cmUyFAdCRPOzNoPDwqOnNNW0o/XFhTM1Aza3BiTzVfck9ENzlIRnBuJE1faTlyXUk0KlFWX2RKR2w7JS9RMUhjIVc+aGNUU2knRjw3JS9WTCtqKWJKPj8sXk82ak8+PT91QmVYXlRbZnUwNT1gV3R1JGVUUFF1R2tfYEdgVCkvSmEiQ04vTDJFTyZCISg9XU5BSF5yUCdUTGxKTSdFJmRWTDhqUFx1UVlUZU0zODMqNV00XCQsJUZXRyVfKGlRUkM+QjRSO29AZV48MDEpYUYwUTZjcmVPVG05bidaPiskOjchRm9UbFhZamhVUl5iX1M7PCliWiY3JjtSJ05EUmNDdHNbZl5hQGtwUWlOJCduLFBvTiJGSSo3LkRmRTVOJS1bRSl0Uj1YJG4vI2hMbnNXVXMsOU9GTmtELFpKUiQrIVA4OSlHPj5sYCFdMihQMFQ/LChPQVBgUnJcZighYCtySUwyZVxjOU5tLjU3KE83OGJtcm08O0BFRVglaShca2EvbFIjWzxHVDdCIjVxLjlXQjtsLGdnP0ZiKHNcaUBpQC03cGcsLFMmbiorYjNOTVd1WmNuSDxNSjo8aCI5PD09UXMkcWgmaTlZLV4qOCs1Qj49MWZQTXVEXjEvRSkuLj1rXmpbYVdyKz9sKm01OU9NY0xKT0xPZCpEZURINyNWOixCb2xyK0FFR1lSQGhsI18pTFV1MzIjOT9GVEhZXlJmPS5xNjFgIz1yL1RCQjBLSGRddW0pMDFJO003UG9IOSlNdEpLS11wRVtEM0lLb0NIJTVwUTpSYUAlNyVGTmpbWCNqcnVZMiVALmkrQ2w5dEQuPGhWcUpXUWAtZSY/bEZBLVNzV1ZvIVhYXUI5RFNoRkZGYWU4XCVFbktpP0JgLjE4MWBEXHQ1ZFRLbV5aRztORnAybyEoK3M0SGZdNCpfcCtWPllbRC1rPUQqJWguSitxKz5rIy8rRkI4NF9mQkVTQklATmoiPDtbT0taLkwpcE4yP0pZOVxLSSJRVHEjaGIkX1toQjhnQWEtclkkanBqJ11oVSYyYFg0VGMsXzQnO1hYXW9vQGxkcyI3SF5sNChkXj1bXHFHYSxvNWgycicmLSc1PkouZC1MI1M+OlhibFAqLkJXKCIjak9iTCc+TyFPRVpDLzU8RyI1Z2VPJXBmY1QqWjthaDo+MEouVSdNPSQnYEpUZDdjVT8nci83MCslTXBZaUQ5cEI2KVJFNCMvSTMsRDgwWmpwb0shWkglQ11IWTUwJy5UMkM5clpAVEc9W3NlcmhCIU0pUTRjKUJyPjpncSpHRSFrNiRATmtwOVppPDhPXl5GMmlxRV00IXM0UURnP2cqSFlca1xVYUhtRXRUNzQ8XSkvPGtNP183MixyVmlkRSQycl84KkwhMVgkKms+RiJjKnFSYXVYcS8kRlVuN2BpWmVLVjswKy04dVdSKFZwQ0lScSMsX0xWM24kNlldRFFISnBWOzw7KClLLVQibmVcU0cpXmBTZDpHakYzNnM3ZzY7XyI6SS9CUFtFXDNGTGFvLjVQVWhAO2taUz4zNmlobTohS09kaGYxUlQnNkBcWis3czNTamRYU1pncGBmQmxZRSciUExOODlRYktmPjwlKTpdQVpmKEd1LjtyMT9IbV4hWF9SMlJiazZZQVhfJTYiJG89UkdtKVkvPT1RViEzOlEsXD0lI3BBcW8sNFdzI3FscVluWFNoJjxWP2A4PVd1XSFZJGUuN1YkO0YkbUw1JmI6TEdQaWxPbCYsJyhWJnRxYD47XVlZO2dhOkwlU1FHclhrIjgtczVII3FHRktiPFddTyQ6aUA0UW1PYyNaV2dmMjNzP09pQXJYWWpLPCFjZlxeS1dqWiN0STJXMlhBbzFFYFBxX1JMXSksS0RibFI8V21Wck5FMlpQREpdSDZVQjgvbUxiVTYzSlBgV05yQEVPRWQ5LVtbR0khKDsrTzxLcHNrbjpETU1cdV5WbkZlVHQ4K0Y1R0g4dVciRWY8OFYocl0qO3QldUUmTGZNbl1qSSR0OTRVL29yViQvRCpkWHNobzNRcz5nY09KXDFnWHA/OGRIOzFtakZlRmtDYExcQUdQMCJLRyhSZEp0USEuc1FbT0VSYUIwdEshJiNRZTo0ZDBxTCpbPDBZNT5PdS86M09tZ0MnaVNYaix0LEwnaHFMOWplOVYoMmYpOWVWczlpSmxjMWNkZSosOyoyI1V1clZbL2lcckZuLGRwUUNOOjgubEohVWRaNz82SyZiLDJNa25nXkNUOVdKOjNTakRzLzYiXy4wTl5IL1dPbDkzI0o1MWApNVhqbEB1LlA2c0E4NGRtJUFxXCJNMEJZNDAta2pLOV40aDE3bUJfV2U0clhAUCw2XlA/RWtBcEpJZkkyWy5pPmI7ZV03SSVtcV5UZ1o+XVRDLStuKUUyK150NnFnZmdEPm5wc2YyNHRFb1djMGU9TXFbcm1LcU1mKENgbkU+K0xsIkUoVjs/I2dbQ1doMmVdQEM0LUc3ayVZSDJrUGlpOkFmWisoKF1hKmZVKTEjUjYrPmtuNl0rYlpKQ2RcMV1vViNFb1FiZi0ta0BhQ2olIVluRWopVmAyNTdaIlMoZFZfZGRaMW8tIXJvSVx0L2I1cChOMkRcI3AncWdsIikzNzlIdEd1PVAjamw0UihmJGtTXVItKjxLY05WaVcrZ1BwSj5CLi05ZyNYIU0oRXRPTz8uazZWLXVfKWFkZmklOHU4JEdVQCVaIVhwcFAkNHMwOFAtWXRHYGclPkBmQCluQm8yJmkjX2khS0VZaWpwXWdPbixdXkE3UztiSl8rJ2pnOT5XOitJdD5MZk0kPGNFclpmTChhZGtjMG81PyY+UzUiaVU/OEhSN1U2VVE+KSgzQzoralImYiMyS0xZMURTWFxbUmg3NDo4X1VjT2htPDM4MCdcUmAsLyxvYEhWLWNsSE1pLXAkN1ksZjJKI1wyR0FAdDkjdVpNPzZeIW5hYVMhYFVbVmY/Ty1nJnFxJERATmVBZT1EdFpVZ3RSbEddb29JJTMnUnVdWFNPQjVDaztoMzlSWnVySm1AXSQ0RSxZUyUwTmduMHQ0PjxjJ0I3QUkwIShjbWlBdEBVJTd0RFUpcyI1UE5tQzNkPGVqX2xpOllqMTpFLFUrXCw6aVEtMTwmV3BhamBRMW51YCNAS2spNzJ1XWlFREBcQyZfOiRlLyNYbztRP25oYElZZE5aaEsxWT5ZRGxXQVQoVGMqaGApNjBidFNKV0tAOlJqbWpwM2xga2AvNUdMWF1jLzVTLlpTI01oamtcUG02b2pvJUQ1SSNnQ15lakI2KS9cbFw4UXM9LDYnUnRWYWNTTG1gSV5jcSclQksmZ1hAJCMhZXIqSyZibUA8LmcwSzJbc29VSTttUUBpW0RGSm1NS2JkOUxjXmc3MjJCYCc8aUtZdGtIdGU6UiQ7JTkyOFgpPExXNiNDJFpfQFpfbmhtZSxzbFUhZHNvbCMua3RsLlxHWCw6cVhNZjZRYFM3a28pTCtnJ2E8QWhSUSQvV15LUE5GWktCIl5wbWUsM0dUZ0BsKCVdXUUxVF1pMDkwXW9dMEJaYlJPXEheSV1bZzp0Q3UpbUNmWVxZdSZscFQoUDNsX0NAIj9rbklZZ1E2LWgtM2cyPnM0JzF1PStDcG9SN3U4dCEjW2BIaVwqOUs8UTcuN2JUIzw5WSRpaU8uQW1EUUYnNFhJPy49KFxGNS0nSixFcUNOLSNgIS1MbU5eb0NTbz1RNU9tZ00ibFw8LERNajlHRzREVXUjb0NjU05NaFZTP3JEVWhFK3NHTTpEajMzXE9HMUAqZFpjblgzMztmZzwvPixtQElaKUg6Tm10UUlhXzhZPlExOFouLDIhQ0o+WS9nIWM9IV4+YWtqMmlwWU1YVHRsSE1bK21sVTN0JWw/KCtCdGNnc0RIKl5BbipScVJXc0o7bkpVRUdcclg2LlNHJzVQNWxvNl1GXFhwPDMpMlJeJGU4UGdJNjhjLz8uUzpzSy5gNW9CL2VMTzJUSWltXm9CSzBgP04zODRvbSoiMj9SajNMIUE1M1daRUA7J1cjb1tRbjBvaXI3ck8tR2dYZGguKS5GdTFPU0U2QnJSJToqVC5PU1dARWgqYzw6Z0laMFkiQjlWYSpvLSU9VTVfKEUyMDlZLFJjbWE8MGEnLz8hbkQ5WyMwSUJYdDwiU2E8ZFAlYEBQPjQsNWAjXilOVTI9J1EoJk1cT19AO1dyZmM/bGMiJyJcRU0sSkRKJlQ2M1lMVHBQdWExW0pQO29QOTorJS8qK0BibmozK3EiLG1RL25mPEkqK15uaFY+amhcSmpuRDJbcVI8OyUpKXRqZ2ZBLTJlJiRAOnRvM3FXNTo1U3AmXChVX1dxZDFzZHBuXFl0ampkbHFVJmdURi1lK1gzQWFaRGxkJFRkTGEjYDt1RWppL1FaIVhzbidtdWgjUylOJilHPSFeYUBgKDhwO0hNYy4pWitQc2BCLlJRZkNTKG5bY10pVTB1KFcxNT9DKD5MWzA7Ok4pJ3JOWWw6QW8xdUBaKTUkOkYmb2Zrbi5xSiR+PmVuZHN0cmVhbQplbmRvYmoKeHJlZgowIDEwCjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDA2MSAwMDAwMCBuIAowMDAwMDAwMTEyIDAwMDAwIG4gCjAwMDAwMDAyMTkgMDAwMDAgbiAKMDAwMDAwMDMzMSAwMDAwMCBuIAowMDAwMDAwNDUwIDAwMDAwIG4gCjAwMDAwMDA2NTMgMDAwMDAgbiAKMDAwMDAwMDcyMSAwMDAwMCBuIAowMDAwMDAxMDAwIDAwMDAwIG4gCjAwMDAwMDEwNTkgMDAwMDAgbiAKdHJhaWxlcgo8PAovSUQgCls8MjAyNjk3ZDlhYjRkMmQ2NWU3MGIxMWM1MzM2MDYzNDg+PDIwMjY5N2Q5YWI0ZDJkNjVlNzBiMTFjNTMzNjA2MzQ4Pl0KJSBSZXBvcnRMYWIgZ2VuZXJhdGVkIFBERiBkb2N1bWVudCAtLSBkaWdlc3QgKG9wZW5zb3VyY2UpCgovSW5mbyA3IDAgUgovUm9vdCA2IDAgUgovU2l6ZSAxMAo+PgpzdGFydHhyZWYKNDkzNQolJUVPRgo=";
